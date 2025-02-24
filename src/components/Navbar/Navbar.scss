@@ -1,6 +1,50 @@
 .navbar
-{
+{  
   width: 100vw;
   height: 75px;
-  background-color: var(--accent); 
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 10px;
+  box-sizing: border-box;
+
+  background-color: var(--primary);
+
+  &__content
+  {
+
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+  }
+  
+  &__button
+  {
+    color: var(--text);
+
+    padding: 8px 12px;
+    height: 24px;
+
+    border-radius: 7px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: background-color 50ms;
+
+    &.active
+    {
+      background-color: var(--accent);
+    }
+
+    &:hover 
+    {
+      background-color: var(--secondary);
+    }
+  }
 }
