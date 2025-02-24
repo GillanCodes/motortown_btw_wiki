@@ -1,4 +1,4 @@
-import Routes from "./Router";
+import Routes from "./router";
 import "./styles.scss";
 
 function App() {
