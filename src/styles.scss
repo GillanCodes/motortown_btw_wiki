@@ -17,3 +17,17 @@ body
   background-position: center;
   color: var(--text);
 }
+
+#app
+{
+  display: flex;
+  justify-content: center;
+}
+
+.container
+{
+  width: 90%;
+  max-width: 1080px;
+  background-color: var(--background);
+  min-height: 100vh;
+}
