@@ -1,6 +1,7 @@
 // Global scss style
 //Import var
 @import "./themes.scss";
+@import "./variables.scss";
 
 * {
   margin: 0;
@@ -26,6 +27,7 @@ body
 
 .container
 {
+  padding-top: $navbar--height;
   width: 90%;
   max-width: 1080px;
   background-color: var(--background);

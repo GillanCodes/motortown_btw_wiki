@@ -1,7 +1,8 @@
 .navbar
 {  
+  position: fixed;
   width: 100vw;
-  height: 75px;
+  height: $navbar--height;
 
   display: flex;
   justify-content: center;
