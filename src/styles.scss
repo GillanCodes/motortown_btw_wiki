@@ -1,7 +1,7 @@
 // Global scss style
 //Import var
-@import "./themes.scss";
-@import "./variables.scss";
+@use "./themes.scss";
+@use "./variables.scss" as variables;
 
 * {
   margin: 0;
@@ -11,7 +11,7 @@
 body
 {
   height: 100vh;
-  background-image: url('/public/images/HighresScreenshot00085_Reduced.png');
+  background-image: url('/images/HighresScreenshot00085_Reduced.png');
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -27,7 +27,7 @@ body
 
 .container
 {
-  padding-top: $navbar--height;
+  padding-top: variables.$navbar--height;
   width: 90%;
   max-width: 1080px;
   background-color: var(--background);
