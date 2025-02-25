@@ -1,0 +1,39 @@
+
+// --- CARD ---
+.card
+{
+  height: 300px;
+  width: 300px;
+
+  border-radius: 7px;
+
+  box-sizing: border-box;
+  padding: 15px;
+
+  background-image: url('/images/HighresScreenshot00085_Reduced.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  &--content
+  {
+    height: 100%;
+    width: 100%;
+
+    border-radius: 4px;
+
+    background-color: rgba($color: #000000, $alpha: .3);
+  }
+
+  &:hover
+  {
+    .card--content
+    {
+      background-color: red; 
+    }
+  }
+}
