@@ -13,7 +13,6 @@ export default function Home() {
           <Card title="Goods" link="/goods" picture="/images/cards/temp.png" />
         </div>
       </div>
-
     </div>
   )
 }
