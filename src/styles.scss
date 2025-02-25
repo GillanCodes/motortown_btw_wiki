@@ -28,8 +28,26 @@ body
 .container
 {
   padding-top: variables.$navbar--height;
-  width: 90%;
+  width: 60%;
   max-width: 1080px;
   background-color: var(--background);
   min-height: 100vh;
+}
+
+@media screen and (max-width: variables.$breakpoint-large) {
+  .container{
+    width: 80%;
+  } 
+}
+
+@media screen and (max-width: variables.$breakpoint-short) {
+  body
+  {
+    background-image: none;
+  }
+
+  .container
+  {
+    width: 100%;
+  } 
 }
