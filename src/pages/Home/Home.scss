@@ -1,3 +1,5 @@
+@use "../../variables.scss" as vars;
+
 .cards
 {
 
@@ -12,6 +14,15 @@
     max-width: calc(600px + 16px);
     width: 100%;
   }
+}
+
+@media screen and (max-width: calc(600px + 15px)) {
+  .card-container
+  {
+    justify-content: center;
+    align-items: center;
+  }
+
 }
 
 
