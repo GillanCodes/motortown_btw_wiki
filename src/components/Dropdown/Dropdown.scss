@@ -1,0 +1,41 @@
+.dropdown
+{
+
+  margin: .5em;
+
+  &__container
+  {
+    width: 100%;
+    min-width: 200px;
+    display: inline-block;
+    box-sizing: border-box;
+    border-radius: 7px;
+    background-color: var(--background-100);
+  }
+
+  &__head
+  {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    user-select: none;
+
+    padding: 10px;
+    background-color: var(--primary);
+    border-radius: 7px;
+    min-width: 200px;
+
+    p
+    {
+      margin-left: .5em;
+      font-size: 18px;
+      text-decoration: underline;
+    }
+  }
+
+  &__content
+  {
+    margin: .5em;
+  }
+}
