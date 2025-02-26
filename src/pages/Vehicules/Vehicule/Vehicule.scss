@@ -1,0 +1,94 @@
+.vehicule
+{
+  &__container
+  {
+    .grid
+    {
+      display: grid;
+
+      grid-template-columns: repeat(3, calc(100% / 3));
+      grid-template-rows: repeat(8, calc((100vh) / 7));
+
+      .box
+      {
+        overflow: hidden;
+      }
+
+      #title
+      {
+        grid-row-start: 1;
+        grid-row-end: 1;
+        grid-column-start: 1;
+        grid-column-end: 3;
+        background-color: red;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        text-decoration: underline;
+      }
+
+      #image
+      {
+        grid-row-start: 1;
+        grid-row-end: 3;
+        grid-column-start: 3;
+        grid-column-end: 4;
+
+        img 
+        {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      #base-stats
+      {
+        grid-row-start: 2;
+        grid-row-end: 6;
+        grid-column-start: 1;
+        grid-column-end: 3;
+
+        background-color: blue;
+
+      }
+      
+      #infos
+      {
+        grid-row-start: 3;
+        grid-row-end: 7;
+        grid-column-start: 3;
+        grid-column-end: 4;
+        
+        background-color: green;
+
+
+      }
+
+      #customization
+      {
+        grid-row-start: 6;
+        grid-row-end: 9;
+        grid-column-start: 1;
+        grid-column-end: 3;
+
+        background-color: pink;
+      }
+
+      #map
+      {
+        grid-row-start: 7;
+        grid-row-end: 9;
+        grid-column-start: 3;
+        grid-column-end: 4;
+
+        background-color: purple;
+
+      }
+    }
+
+    
+  }
+}

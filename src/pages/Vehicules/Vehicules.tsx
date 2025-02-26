@@ -23,8 +23,8 @@ export const Vehicules = () => {
               <tr key={key} onClick={() => navigate(`/vehicules/${vehicule.slug}`)}>
                 <td><img src={vehicule.picture} alt={vehicule.name} /></td>
                 <td>{vehicule.name}</td>
-                <td>{vehicule.categories[0]}</td>
-                <td>{vehicule.prices.buy}</td>
+                <td>{vehicule.info.categories[0]}</td>
+                <td>{vehicule.info.prices.buy}</td>
               </tr>
             )
           })}
