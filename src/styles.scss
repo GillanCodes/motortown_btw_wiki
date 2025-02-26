@@ -20,11 +20,13 @@ body {
 
 #app {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .container {
-  padding-top: variables.$navbar--height;
+  padding-bottom: 100px;
   width: 60%;
   max-width: 1080px;
   background-color: var(--background);
