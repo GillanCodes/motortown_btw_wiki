@@ -1,5 +1,47 @@
 @use "../../variables.scss" as vars;
 
+.home
+{
+  &__head
+  {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    &__title
+    {
+      text-decoration: underline;
+      font-weight: 600;
+      margin-left: 1em;
+    }
+
+    &__main-logo
+    {
+      height: 200px;
+      width: 200px;
+    }
+  }
+
+  &__info
+  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 50px;
+
+    .button 
+    {
+      margin-top: 20px;
+    }
+
+  }
+
+  
+}
+
 .cards
 {
 
