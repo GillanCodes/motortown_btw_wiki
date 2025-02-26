@@ -1,5 +1,7 @@
-{
-  "mitage": {
+[
+  {
+    "name": "Mitage",
+    "slug": "mitage-car",
     "categories" : ["SUV", "Car"],
     "levels" : [{  
        "job": "Driver",
@@ -12,14 +14,14 @@
     "drivetrain": "AWD",
     "base_stat": {
       "transmission": "4 Speed mucle",
-      "engine": "V8 450HP"
+      "engine": "V8 450HP",
       "seats": 4,
       "mass": 1700,
       "fuel_tank": 70,
       "wheels": 4
     },
     "confort": 3,
-    "picture": "/image/mitage.png",
+    "picture": "/images/mitage.png",
     "patch": "0.40B",
     "offroad": true,
     "content": {
@@ -29,21 +31,22 @@
     "map": [
       {
         "x": 9,
-        "y": 8,
+        "y": 8
       }
     ]    
-   },
-
-  "Cora": {
-    "categories" : ["sportcar", "Car", "recreationalcar"],
+  },
+  {
+    "name": "Cora",
+    "slug": "cora-car",
+    "categories" : ["sportcar", "Car"],
     "levels" : [{  
-        "job": "Driver",
-        "level": 5
-      },
-      {
-        "job": "Trucker",
-        "level": 50
-      }],
+       "job": "Driver",
+      "level": 5
+    }, 
+    {
+      "job": "Trucker",
+      "level": 35
+    }],
     "prices": {
       "buy": "65000",
       "rent": "65"
@@ -51,25 +54,25 @@
     "drivetrain": "FWD",
     "base_stat": {
       "transmission": "5 Speed",
-      "engine": "V8 240HP"
+      "engine": "V8 240HP",
       "seats": 4,
       "mass": 1700,
       "fuel_tank": 70,
       "wheels": 4
     },
     "confort": 3,
-    "picture": "/image/cora.png",
+    "picture": "/images/cora.png",
     "patch": "0.40B",
-    "offroad": false,
+    "offroad": true,
     "content": {
-    "usage": "HTML OBJECT",
-    "location": "HTML ITEM"
-  },
-  "map": [
-    {
-      "x": 9,
-      "y": 8,
+      "usage": "HTML OBJECT",
+      "location": "HTML ITEM"
+    },
+    "map": [
+      {
+        "x": 9,
+        "y": 8
       }
     ]    
-  }, 
-}
+  }
+]
