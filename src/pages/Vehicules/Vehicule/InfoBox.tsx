@@ -1,4 +1,4 @@
-import { Star } from "lucide-react";
+import { Currency, Star } from "lucide-react";
 
 export const InfoBox = ({vehicule}: any) => {
 
@@ -21,8 +21,10 @@ export const InfoBox = ({vehicule}: any) => {
         </div>
         <div className="field">
           <p className="field__title">Prices :</p>
-          <p className="field__content">{"Buy : " + vehicule.info.prices.buy + "g"} <br />
-            {"Rent : " + vehicule.info.prices.rent + "g / 10min"}</p>
+          <p className="field__content">
+            <span>Buy {Number(vehicule.info.prices.buy).toLocaleString()}g</span>
+            <span>Rent {Number(vehicule.info.prices.rent).toLocaleString()}g/10min</span>
+          </p>
         </div>
         <div className="field">
           <p className="field__title">Confort :</p>
