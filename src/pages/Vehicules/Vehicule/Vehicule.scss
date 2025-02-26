@@ -4,14 +4,45 @@
   {
     .grid
     {
+      $grid-gap: 1em;
       display: grid;
 
-      grid-template-columns: repeat(3, calc(100% / 3));
+      grid-template-columns: repeat(3, calc((100% - 2 * $grid-gap) / 3));
       grid-template-rows: repeat(8, calc((100vh) / 7));
+
+      gap: $grid-gap;
+      margin: $grid-gap;
 
       .box
       {
         overflow: hidden;
+        border-radius: 14px;
+        box-shadow: 0px 0px 5px 3px rgba($color: #000000, $alpha: .75);
+
+        box-sizing:border-box;
+
+        &__container
+        {
+          margin: 1em;
+
+          &__content .field
+          {
+            width: 100%;
+
+            &__title
+            {
+              margin: 5px 0;
+            }
+
+            &__content
+            {
+              border: 1px solid var(--text);
+              padding: 5px;
+              display: flex;
+              align-items: center;
+            } 
+          }
+        }
       }
 
       #title
@@ -44,7 +75,7 @@
         }
       }
 
-      #base-stats
+      #parts
       {
         grid-row-start: 2;
         grid-row-end: 6;
@@ -61,13 +92,9 @@
         grid-row-end: 7;
         grid-column-start: 3;
         grid-column-end: 4;
-        
-        background-color: green;
-
-
       }
 
-      #customization
+      #map
       {
         grid-row-start: 6;
         grid-row-end: 9;
@@ -77,16 +104,6 @@
         background-color: pink;
       }
 
-      #map
-      {
-        grid-row-start: 7;
-        grid-row-end: 9;
-        grid-column-start: 3;
-        grid-column-end: 4;
-
-        background-color: purple;
-
-      }
     }
 
     
