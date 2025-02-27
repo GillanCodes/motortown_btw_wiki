@@ -50,14 +50,16 @@ export const InfoBox = ({vehicule}: any) => {
         </div>
         <div className="field">
           <p className="field__title">Cargo</p>
-          {vehicule.info.cargo ? (
             <p className="field__content">
-              Type : {vehicule.info.cargo.type} <br />
-              Size : {vehicule.info.cargo.size}{vehicule.info.cargo.unit}
+              {vehicule.info.cargo ? (
+              <>
+                Type : {vehicule.info.cargo.type} <br />
+                Size : {vehicule.info.cargo.size}{vehicule.info.cargo.unit}
+              </>
+              ): (
+                <>This can not contain any cargo.</>
+              )}
             </p>
-          ) : (
-            <p>This can not contain any cargo.</p>
-          )}
         </div>
       </div>
     </div>
