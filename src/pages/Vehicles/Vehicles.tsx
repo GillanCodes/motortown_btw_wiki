@@ -13,16 +13,16 @@ export const Vehicles = () => {
       <table>
         <thead>
           <tr>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Categories</th>
-            <th>Prices</th>
+            <th>image</th>
+          <th>name</th>
+            <th>categories</th>
+            <th>prices</th>
           </tr>
         </thead>
         <tbody>
-          {vehicles!.map((vehicle:Vehicle, key:number) => {
+          {vehicles!.map((vehicle:vehicle, key:number) => {
             return (
-              <tr key={key} onClick={() => navigate(`/vehicles/${vehicle.slug}`)}>
+              <tr key={key} onclick={() => navigate(`/vehicles/${vehicle.slug}`)}>
                 <td><img src={vehicle.picture} alt={vehicle.name} /></td>
                 <td>{vehicle.name}</td>
                 <td>{vehicle.info.categories.join(', ')}</td>
