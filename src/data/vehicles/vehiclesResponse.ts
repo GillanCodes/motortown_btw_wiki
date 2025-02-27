@@ -2,7 +2,7 @@ import Vehicle from "../../models/Vehicle";
 
 import cora from "./cora.json";
 
-export function getAllVehicles(): void | Vehicle[]
+export function getAllVehicles(): Vehicle[]
 {
   var response: Vehicle[] = [];
 
