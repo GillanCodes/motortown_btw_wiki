@@ -1,0 +1,24 @@
+{
+  "name": "Jemusi-Semi",
+  "slug": "jemusi-semi",
+  "picture": "/images/image_26.png",
+  "info": {
+    "categories": ["Truck", "Semi Truck"],
+    "purpose": "Offroad trucking",
+    "confort": 1,
+    "seat": 2,
+    "wheels": 6,
+    "powertrain": "AWD",
+    "prices": {"buy": 150000, "rent": 150},
+    "unlock": [ {"job": "driver", "level": 10} ]
+  },
+  "customization": {
+    "engine": [
+      {"name": "Medium-Duty 190HP", "default": true },
+      {"name": "Medium-Duty 250HP", "default": false},
+      {"name": "Medium-Duty 330HP", "default": false}
+    ]
+  },
+  "location": [ {"x": 0, "y": 10} ]
+}
+
