@@ -1,10 +1,12 @@
+import './Vehicles.scss';
 import { useNavigate } from "react-router";
-import vehicules from "../../data/vehicules.json";
-import './Vehicules.scss';
+import { getAllVehicles } from "../../data/vehicles/vehiclesResponse.ts";
+import Vehicle from "../../models/Vehicle";
 
-export const Vehicules = () => {
+export const Vehicles = () => {
 
   let navigate = useNavigate();
+  const vehicules = getAllVehicles();
 
   return (
     <div className="container vehicules__container">
@@ -18,9 +20,9 @@ export const Vehicules = () => {
           </tr>
         </thead>
         <tbody>
-          {vehicules.map((vehicule, key) => {
+          {vehicules!.map((vehicule:Vehicle, key:number) => {
             return (
-              <tr key={key} onClick={() => navigate(`/vehicules/${vehicule.slug}`)}>
+              <tr key={key} onClick={() => navigate(`/vehicles/${vehicule.slug}`)}>
                 <td><img src={vehicule.picture} alt={vehicule.name} /></td>
                 <td>{vehicule.name}</td>
                 <td>{vehicule.info.categories.join(', ')}</td>

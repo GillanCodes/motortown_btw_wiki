@@ -1,16 +1,17 @@
 import { useParams } from "react-router";
-import vehicules from "../../../data/vehicules.json";
-import "./Vehicule.scss";
+import vehicles from "../../../data/vehicles.json";
+import "./Vehicle.scss";
 import { InfoBox } from "./InfoBox";
 import { PartsBox } from "./PartsBox";
+import Vehicle from "../../../models/Vehicle";
 
 export default function Vehicule() {
 
   const { slug } = useParams<{ slug: string }>();
 
-  const vehicule = vehicules.find((v:any) => v.slug === slug);
+  const vehicle = new Vehicle(vehicles.find((v:any) => v.slug === slug));
 
-  if(!vehicule)
+  if(!vehicle)
   {
     return 'no vehicule';
     // TODO : Error page
@@ -21,17 +22,17 @@ export default function Vehicule() {
       <div className="grid">
           
         <div className="box" id="title">
-          <h1>{vehicule.name}</h1>
+          <h1>{vehicle.name}</h1>
         </div>
       <div className="box" id="image">
-          <img src={vehicule.picture} alt={vehicule.name} />
+          <img src={vehicle.picture} alt={vehicle.name} />
         </div>
         <div className="box" id="parts">
-          <PartsBox vehicle={vehicule} /> 
+          <PartsBox vehicle={vehicle} /> 
         </div>
 
         <div className="box" id="infos">
-          <InfoBox vehicule={vehicule} />
+          <InfoBox vehicule={vehicle} />
         </div>
         <div className="box" id="map">
           <p>map</p>

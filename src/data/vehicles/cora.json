@@ -1,0 +1,24 @@
+{
+  "name": "Cora",
+  "slug": "cora",
+  "picture": "/images/image_12.png",
+  "info": {
+    "categories": ["Car", "Sport Car"],
+    "purpose": "Recreative car and can be a good taxi",
+    "confort": 3,
+    "seat": 4,
+    "wheels": 4,
+    "powertrain": "FWD",
+    "prices": {"buy": 65000, "rent": 65},
+    "unlock": [ {"job": "driver", "level": 10} ]
+  },
+  "customization": {
+    "engine": [
+      {"name": "Medium-Duty 190HP", "default": true },
+      {"name": "Medium-Duty 250HP", "default": false},
+      {"name": "Medium-Duty 330HP", "default": false}
+    ]
+  },
+  "location": [ {"x": 0, "y": 10} ]
+}
+

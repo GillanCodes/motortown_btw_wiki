@@ -1,6 +1,7 @@
-import { Currency, Star } from "lucide-react";
+import { Star } from "lucide-react";
+import Vehicle from "../../../models/Vehicule";
 
-export const InfoBox = ({vehicule}: any) => {
+export const InfoBox = ({vehicule}: {vehicule: Vehicle}) => {
 
   const stars = [];
   for (let index = 0; index < vehicule.info.confort; index++) {
@@ -29,9 +30,9 @@ export const InfoBox = ({vehicule}: any) => {
         <div className="field">
           <p className="field__title">Confort :</p>
           <p className="field__content">
-            {stars.map((s: number) => {
+            {stars.map((_s: number, key:number) => {
               return (
-                <Star />
+                <Star key={key} />
               )
             })}
           </p>
