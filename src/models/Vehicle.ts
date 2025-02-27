@@ -26,13 +26,8 @@ interface Info {
   unlock: UnlockRequirement[];
 }
 
-interface Engine {
-  name: string;
-  default: boolean;
-}
-
 interface Customization {
-  engine: Engine[];
+  engine: string[];
 }
 
 interface Location {

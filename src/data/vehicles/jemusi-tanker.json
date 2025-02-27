@@ -14,11 +14,7 @@
     "unlock": [ {"job": "driver", "level": 10} ]
   },
   "customization": {
-    "engine": [
-      {"name": "Medium-Duty 190HP", "default": true },
-      {"name": "Medium-Duty 250HP", "default": false},
-      {"name": "Medium-Duty 330HP", "default": false}
-    ]
+    "engine": ["engine-v8_440hp"]
   },
   "location": [ {"x": 0, "y": 10} ]
 }
