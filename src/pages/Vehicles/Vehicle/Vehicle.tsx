@@ -1,13 +1,14 @@
 import { useParams } from "react-router";
-import vehicles from "../../../data/vehicles.json";
 import "./Vehicle.scss";
 import { InfoBox } from "./InfoBox";
 import { PartsBox } from "./PartsBox";
 import Vehicle from "../../../models/Vehicle";
+import { getAllVehicles } from "../../../data/vehicles/vehiclesResponse";
 
 export default function Vehicule() {
 
   const { slug } = useParams<{ slug: string }>();
+  const vehicles = getAllVehicles();
 
   const vehicle = new Vehicle(vehicles.find((v:any) => v.slug === slug));
 
