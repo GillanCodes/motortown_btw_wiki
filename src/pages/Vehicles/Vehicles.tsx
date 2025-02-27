@@ -6,7 +6,7 @@ import Vehicle from "../../models/Vehicle";
 export const Vehicles = () => {
 
   let navigate = useNavigate();
-  const vehicules = getAllVehicles();
+  const vehicles = getAllVehicles();
 
   return (
     <div className="container vehicules__container">
@@ -20,13 +20,13 @@ export const Vehicles = () => {
           </tr>
         </thead>
         <tbody>
-          {vehicules!.map((vehicule:Vehicle, key:number) => {
+          {vehicles!.map((vehicle:Vehicle, key:number) => {
             return (
-              <tr key={key} onClick={() => navigate(`/vehicles/${vehicule.slug}`)}>
-                <td><img src={vehicule.picture} alt={vehicule.name} /></td>
-                <td>{vehicule.name}</td>
-                <td>{vehicule.info.categories.join(', ')}</td>
-                <td>{vehicule.info.prices.buy}</td>
+              <tr key={key} onClick={() => navigate(`/vehicles/${vehicle.slug}`)}>
+                <td><img src={vehicle.picture} alt={vehicle.name} /></td>
+                <td>{vehicle.name}</td>
+                <td>{vehicle.info.categories.join(', ')}</td>
+                <td>{vehicle.info.prices.buy}</td>
               </tr>
             )
           })}
