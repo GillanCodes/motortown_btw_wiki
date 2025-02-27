@@ -1,5 +1,5 @@
 import { Star } from "lucide-react";
-import Vehicle from "../../../models/Vehicule";
+import Vehicle from "../../../models/Vehicle";
 
 export const InfoBox = ({vehicule}: {vehicule: Vehicle}) => {
 
@@ -29,7 +29,7 @@ export const InfoBox = ({vehicule}: {vehicule: Vehicle}) => {
         </div>
         <div className="field">
           <p className="field__title">Confort :</p>
-          <p className="field__content">
+          <p className="field__content" style={{flexDirection:"row", justifyContent:"center"}}>
             {stars.map((_s: number, key:number) => {
               return (
                 <Star key={key} />
