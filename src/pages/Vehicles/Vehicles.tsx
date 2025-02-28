@@ -10,17 +10,17 @@ export const Vehicles = () => {
 
   return (
     <div className="container vehicules__container">
-      <table>
+      <table className='table'>
         <thead>
-          <tr>
+          <tr className='table__head'>
             <th>image</th>
-          <th>name</th>
+            <th>name</th>
             <th>categories</th>
             <th>prices</th>
           </tr>
         </thead>
         <tbody>
-          {vehicles!.map((vehicle:Vehicle, key:number) => {
+          {vehicles!.map((vehicle: Vehicle, key: number) => {
             return (
               <tr key={key} onClick={() => navigate(`/vehicles/${vehicle.slug}`)}>
                 <td><img src={vehicle.picture} alt={vehicle.name} /></td>
@@ -31,7 +31,7 @@ export const Vehicles = () => {
             )
           })}
         </tbody>
-      </table> 
+      </table>
     </div>
   )
 }
