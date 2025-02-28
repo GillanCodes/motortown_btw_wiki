@@ -1,12 +1,13 @@
 import { Dropdown } from "../../../components/Dropdown/Dropdown"
-import Part from "../../../models/Part"
+import Part from "../../../models/Part";
+import Vehicle from "../../../models/Vehicle";
 
-const Table = ({part} : {part?:Part}) => {
+const Table = ({ part }: { part?: Part }) => {
   return (
     <div>
-      <table style={{ margin: 0 }}>
+      <table className="table" style={{ margin: 0 }}>
         <thead>
-          <tr>
+          <tr className="table__head">
             <th>name</th>
             <th>mass</th>
             <th>prices</th>
@@ -33,28 +34,11 @@ const Table = ({part} : {part?:Part}) => {
   )
 }
 
-export const PartsBox = ({ vehicle: any }) => {
+export const PartsBox = ({ vehicle }: { vehicle?: Vehicle }) => {
   return (
     <div className="box__container">
       <Dropdown content={<Table />} title="Engine" />
-      <Dropdown content={<Table />} title="Other" />
-      <Dropdown content={<Table />} title="Other" />
-      <Dropdown content={<Table />} title="Other" />
-      <Dropdown content={<Table />} title="Other" />
-      <Dropdown content={<Table />} title="Other" />
-      <Dropdown content={<Table />} title="Other" />
-      <Dropdown content={<Table />} title="Other" />
-      <Dropdown content={<Table />} title="Other" />
-      <Dropdown content={<Table />} title="Other" />
-      <Dropdown content={<Table />} title="Other" />
-      <Dropdown content={<Table />} title="Other" />
-      <Dropdown content={<Table />} title="Other" />
-      <Dropdown content={<Table />} title="Other" />
-      <Dropdown content={<Table />} title="Other" />
-      <Dropdown content={<Table />} title="Other" />
-      <Dropdown content={<Table />} title="Other" />
-      <Dropdown content={<Table />} title="Other" />
-      <Dropdown content={<Table />} title="Other" />
+      <Dropdown content={<Table />} title="Others" />
     </div >
   )
 }
