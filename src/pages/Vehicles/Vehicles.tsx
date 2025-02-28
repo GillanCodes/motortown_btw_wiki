@@ -20,9 +20,9 @@ export const Vehicles = () => {
           </tr>
         </thead>
         <tbody>
-          {vehicles!.map((vehicle:vehicle, key:number) => {
+          {vehicles!.map((vehicle:Vehicle, key:number) => {
             return (
-              <tr key={key} onclick={() => navigate(`/vehicles/${vehicle.slug}`)}>
+              <tr key={key} onClick={() => navigate(`/vehicles/${vehicle.slug}`)}>
                 <td><img src={vehicle.picture} alt={vehicle.name} /></td>
                 <td>{vehicle.name}</td>
                 <td>{vehicle.info.categories.join(', ')}</td>
