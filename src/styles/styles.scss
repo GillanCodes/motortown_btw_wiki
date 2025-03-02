@@ -33,7 +33,7 @@ body {
   width: 60%;
   max-width: 1080px;
   background-color: var(--background);
-  min-height: 100vh;
+  min-height: calc(100vh - variables.$navbar--height - 100px);
 }
 
 
