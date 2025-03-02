@@ -1,40 +1,30 @@
+type CategoryType = {
+  main: string;
+  sub: string;
+};
+
+type InfoType = {
+  betterment: {
+    size: number;
+    unit: string;
+  };
+  mass: number;
+};
+
 class Part {
   name: string;
-  category: string;
+  category: CategoryType;
   slug: string;
   description: string;
-  info: {
-    betterment: {
-      size: number;
-      unit: string;
-    };
-    mass: string;
-  };
+  info: InfoType;
 
-  constructor(
-    name: string,
-    category: string,
-    slug: string,
-    description: string,
-    bettermentSize: number,
-    bettermentUnit: string,
-    mass: string
-  ) {
+  constructor({ name, category, slug, description, info }:
+    { name: string; category: CategoryType; slug: string; description: string; info: InfoType; }) {
     this.name = name;
     this.category = category;
     this.slug = slug;
     this.description = description;
-    this.info = {
-      betterment: {
-        size: bettermentSize,
-        unit: bettermentUnit,
-      },
-      mass: mass,
-    };
-  }
-
-  getSlug() {
-    return this.slug;
+    this.info = info;
   }
 
 }
