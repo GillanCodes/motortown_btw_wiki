@@ -8,28 +8,29 @@ import { getAllVehicles } from "../../../data/vehicles/vehiclesResponse";
 export default function Vehicule() {
 
   const { slug } = useParams<{ slug: string }>();
-  const vehicles = getAllVehicles();
+  const vehicles:Vehicle[] | undefined = getAllVehicles();
 
-  const vehicle = new Vehicle(vehicles.find((v:any) => v.slug === slug));
+  const vehicleData:Vehicle | undefined = vehicles.find((v: any) => v.slug === slug)
 
-  if(!vehicle)
-  {
+  if (!vehicleData) {
     return 'no vehicule';
     // TODO : Error page
   }
 
+  const vehicle:Vehicle = new Vehicle(vehicleData);
+
   return (
     <div className="container vehicule__container">
       <div className="grid">
-          
+
         <div className="box" id="title">
           <h1>{vehicle.name}</h1>
         </div>
-      <div className="box" id="image">
+        <div className="box" id="image">
           <img src={vehicle.picture} alt={vehicle.name} />
         </div>
         <div className="box" id="parts">
-          <PartsBox vehicle={vehicle} /> 
+          <PartsBox vehicle={vehicle} />
         </div>
 
         <div className="box" id="infos">
@@ -40,7 +41,7 @@ export default function Vehicule() {
         </div>
 
       </div>
-    </div>  
+    </div>
   )
 }
 
