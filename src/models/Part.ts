@@ -9,6 +9,7 @@ type InfoType = {
     unit: string;
   };
   mass: number;
+  price: number;
 };
 
 class Part {
