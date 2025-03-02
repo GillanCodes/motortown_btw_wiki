@@ -1,0 +1,17 @@
+{
+  "name": "Brake Pad 1",
+  "category": {
+    "main": "brakes",
+    "sub": "pad"
+  },
+  "slug": "pad-one",
+  "description": "a better brake pad",
+  "info": {
+    "betterment": {
+      "size": 5,
+      "unit": "% Speed"
+    },
+    "mass": "5",
+    "price": 5000
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Dory",
+  "slug": "dory",
+  "picture": "/images/dev/image_4.png",
+  "info": {
+    "categories": ["Pickup"],
+    "purpose": "Cargo transport",
+    "confort": 1,
+    "seat": 2,
+    "wheels": 4,
+    "powertrain": "FWD",
+    "prices": {"buy": 20000, "rent": 20},
+    "unlock": [ {"job": "driver", "level": 1} ]
+  },
+  "customization": {
+    "engine": ["engine-v8_440hp"]
+  },
+  "location": [ {"x": 0, "y": 10} ]
+}
+

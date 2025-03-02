@@ -1,0 +1,17 @@
+{
+  "name": "stock turbo",
+  "category": {
+    "main": "powertrain",
+    "sub": "turbo"
+  },
+  "slug": "stock-turbo",
+  "description": "A V8 engine 440HP",
+  "info": {
+    "betterment": {
+      "size": 400,
+      "unit": "HP"
+    },
+    "mass": "750",
+    "price": 80000
+  }
+}

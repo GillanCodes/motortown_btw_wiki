@@ -1,0 +1,17 @@
+{
+  "name": "stock Radiator",
+  "category": {
+    "main": "powertrain",
+    "sub": "radiator"
+  },
+  "slug": "stock-radiator",
+  "description": "A V8 engine 440HP",
+  "info": {
+    "betterment": {
+      "size": 400,
+      "unit": "HP"
+    },
+    "mass": "750",
+    "price": 80000
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "150% Brake power",
+  "category": {
+    "main": "brakes",
+    "sub": "power"
+  },
+  "slug": "150-power",
+  "description": "Add 150% power to your braking",
+  "info": {
+    "betterment": {
+      "size":150,
+      "unit": "%"
+    },
+    "mass": "5",
+    "price": 5000
+  }
+}
