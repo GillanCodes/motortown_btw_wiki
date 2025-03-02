@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Powertrain",
+    "slug": "powertrain",
+    "sub": [
+      {
+        "name": "Engines",
+        "slug": "engines"
+      },
+      {
+        "name": "Turbo",
+        "slug": "trubo"
+      },
+      {
+        "name": "Radiator",
+        "slug": "radiator"
+      }
+    ]
+  },
+  {
+    "name": "Brakes",
+    "slug": "brakes",
+    "sub": [
+      {
+        "name": "Power",
+        "slug": "power"
+      },
+      {
+        "name": "Pads",
+        "slug": "pad"
+      }
+    ]
+  }
+]

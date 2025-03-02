@@ -1,16 +1,16 @@
 {
-  "name": "V8 440HP",
+  "name": "V8 240HP",
   "category": {
     "main": "powertrain",
     "sub": "engines"
   },
-  "slug": "engine-v8_440hp",
-  "description": "A V8 engine 440HP",
+  "slug": "engine-v8_240hp",
+  "description": "A V8 engine 240HP",
   "info": {
     "betterment": {
-      "size": 400,
+      "size": 240,
       "unit": "HP"
     },
-    "mass": "750"
+    "mass": "250"
   }
 }
