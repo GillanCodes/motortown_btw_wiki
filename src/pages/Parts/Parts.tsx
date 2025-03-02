@@ -32,6 +32,7 @@ export const Parts = () => {
                       <thead>
                         <tr className="table__head">
                           <th>Name</th>
+                          <th>Description</th>
                           <th>Price</th>
                         </tr>
                       </thead>
@@ -42,6 +43,7 @@ export const Parts = () => {
                           return (
                             <tr key={key} onClick={() => navigate("/parts/" + part.slug)}>
                               <td>{part.name}</td>
+                              <td>{part.description}</td>
                               <td>{Number(part.info.price).toLocaleString()}g</td>
                             </tr>
                           )
