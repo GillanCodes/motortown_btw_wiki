@@ -18,9 +18,9 @@ export default function Home() {
 
       <div className="cards">
         <div className="card-container">
-          <Card title="Vehicles" link="/vehicles" picture="/images/cards/temp.png" />
-          <Card title="Map" link="/map" picture="/images/cards/temp.png" />
-          <Card title="Goods" link="/goods" picture="/images/cards/temp.png" />
+          <Card title="Vehicles" link="/vehicles" picture="/images/dev/image_13.png" />
+          <Card title="Map" link="/map" picture="/images/dev/image_22.png" />
+          <Card title="Goods" link="/goods" picture="/images/dev/image_7.png" />
         </div>
       </div>
     </div>
