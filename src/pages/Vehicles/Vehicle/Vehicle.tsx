@@ -2,23 +2,22 @@ import { useParams } from "react-router";
 import "./Vehicle.scss";
 import { InfoBox } from "./InfoBox";
 import { PartsBox } from "./PartsBox";
-import Vehicle from "../../../models/Vehicle";
+import VehicleClass from "../../../models/Vehicle";
 import { getAllVehicles } from "../../../data/vehicles/vehiclesResponse";
 
-export default function Vehicule() {
+export default function Vehicle() {
 
   const { slug } = useParams<{ slug: string }>();
-  const vehicles:Vehicle[] | undefined = getAllVehicles();
+  const vehicles:VehicleClass[] | undefined = getAllVehicles();
 
-  const vehicleData:Vehicle | undefined = vehicles.find((v: any) => v.slug === slug)
+  const vehicleData:VehicleClass | undefined = vehicles.find((v: any) => v.slug === slug)
 
   if (!vehicleData) {
     return 'no vehicule';
     // TODO : Error page
   }
 
-  const vehicle:Vehicle = new Vehicle(vehicleData);
-
+  const vehicle:VehicleClass = new VehicleClass(vehicleData);
   return (
     <div className="container vehicule__container">
       <div className="grid">
