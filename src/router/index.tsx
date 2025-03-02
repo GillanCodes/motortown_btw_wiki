@@ -6,6 +6,7 @@ import { Footer } from '../components/Footer/Footer';
 import { Vehicles } from '../pages/Vehicles/Vehicles';
 import Vehicle from '../pages/Vehicles/Vehicle/Vehicle';
 import { Parts } from '../pages/Parts/Parts';
+import Part from '../pages/Parts/Part/Part';
 
 export default function index() {
   return (
@@ -20,6 +21,7 @@ export default function index() {
           </Route>
           <Route path="parts">
             <Route index element={<Parts />} />
+            <Route path=':slug' element={<Part />} />
           </Route>
           <Route path='*' element={<NotFound />} />
         </Routes>
