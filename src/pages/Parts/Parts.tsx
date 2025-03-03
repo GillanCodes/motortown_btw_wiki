@@ -6,7 +6,6 @@ import Part from "../../models/Part";
 import { useNavigate } from 'react-router';
 
 export const Parts = () => {
-
   const categories: Category[] = categoriesJson;
   const parts: Part[] = getAllParts();
 
