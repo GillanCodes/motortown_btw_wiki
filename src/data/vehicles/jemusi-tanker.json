@@ -13,9 +13,7 @@
     "prices": {"buy": 150000, "rent": 150},
     "unlock": [ {"job": "driver", "level": 10} ]
   },
-  "customization": {
-    "engine": ["engine-v8_440hp"]
-  },
+  "parts" : ["stock-turbo", "engine-v8_440hp"],
   "location": [ {"x": 0, "y": 10} ]
 }
 

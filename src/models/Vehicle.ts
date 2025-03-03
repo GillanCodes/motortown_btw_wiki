@@ -26,10 +26,6 @@ interface Info {
   unlock: UnlockRequirement[];
 }
 
-interface Customization {
-  engine: string[];
-}
-
 interface Location {
   x: number;
   y: number;
@@ -40,7 +36,7 @@ class Vehicle {
   slug: string;
   picture: string;
   info: Info;
-  customization: Customization;
+  parts: string[]
   location: Location[];
 
   constructor({
@@ -58,21 +54,21 @@ class Vehicle {
       cargo: { type: "none", unit: "", size: 0 },
       unlock: []
     },
-    customization = { engine: [] },
+    parts = [],
     location = [{ x: 0, y: 0 }]
   }: {
     name?: string;
     slug?: string;
     picture?: string;
     info?: Info;
-    customization?: Customization;
+    part?: string[]
     location?: Location[];
   }) {
     this.name = name;
     this.slug = slug;
     this.picture = picture;
     this.info = info;
-    this.customization = customization;
+    this.parts = parts;
     this.location = location;
   }
 
