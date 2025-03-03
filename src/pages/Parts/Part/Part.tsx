@@ -1,6 +1,8 @@
+import "./Part.scss";
 import { useParams } from "react-router";
 import { getAllParts } from "../../../data/parts/partsResponse";
 import PartClass from "../../../models/Part.ts";
+import { InfoBox } from "./InfoBox.tsx";
 
 export default function Part() {
   const { slug } = useParams<{ slug: string }>();
@@ -19,20 +21,17 @@ export default function Part() {
   const part:PartClass = new PartClass(partData);
 
   return (
-    <div className="container part_container">
+    <div className="container part__container">
       <div className="grid">
 
-        <div id="title">
+        <div className="box" id="title">
           {part.name}
         </div>
-        <div id="info">
-          <div className="field">
-            <p className="field__title">Description</p>
-            <p className="field__content">{part.description}</p>
-          </div>
+        <div className="box" id="infos">
+          <InfoBox part={part} />
         </div>
-        <div id="vehicles">
-
+        <div className="box" id="vehicles">
+          
         </div>
 
       </div>
