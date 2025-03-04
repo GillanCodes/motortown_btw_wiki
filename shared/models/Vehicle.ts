@@ -61,7 +61,7 @@ class Vehicle {
     slug?: string;
     picture?: string;
     info?: Info;
-    part?: string[]
+    parts?: string[]
     location?: Location[];
   }) {
     this.name = name;
