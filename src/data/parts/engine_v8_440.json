@@ -13,5 +13,6 @@
     },
     "mass": "750",
     "price": 80000
-  }
+  },
+  "vehicles": ["jemusi-tanker", "cora", "dory", "jemusi-semi", "cora", "cora"]
 }
