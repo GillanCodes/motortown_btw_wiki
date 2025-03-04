@@ -18,7 +18,7 @@ export default function Home() {
 
       <div className="cards">
         <div className="card-container">
-          <Card title="Vehicles" link="/vehicles" picture="/images/dev/image_13.png" />
+          <Card title="Vehicles" link="/vehicles" picture={"/images/dev/image_13.png"} />
           <Card title="Parts" link="/parts" picture="/images/dev/image_23.png" />
           <Card title="Map" link="/map" picture="/images/dev/image_12.png" />
           <Card title="Goods" link="/goods" picture="/images/dev/image_7.png" />
