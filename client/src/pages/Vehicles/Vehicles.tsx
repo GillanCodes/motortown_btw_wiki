@@ -1,7 +1,7 @@
 import './Vehicles.scss';
 import { useNavigate } from "react-router";
 import { getAllVehicles } from "../../data/vehicles/vehiclesResponse.ts";
-import Vehicle from "../../models/Vehicle";
+import Vehicle from "../../../../shared/models/Vehicle.ts";
 
 export const Vehicles = () => {
 

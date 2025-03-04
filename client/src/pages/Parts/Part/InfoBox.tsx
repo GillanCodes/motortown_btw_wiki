@@ -1,4 +1,4 @@
-import Part from "../../../models/Part";
+import Part from "../../../../../shared/models/Part"
 
 export const InfoBox = ({part}: {part: Part}) => {
 

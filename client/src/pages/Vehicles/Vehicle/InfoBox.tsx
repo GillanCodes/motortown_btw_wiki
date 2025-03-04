@@ -1,5 +1,5 @@
 import { Star } from "lucide-react";
-import Vehicle from "../../../models/Vehicle";
+import Vehicle from "../../../../../shared/models/Vehicle";
 
 export const InfoBox = ({vehicule}: {vehicule: Vehicle}) => {
 

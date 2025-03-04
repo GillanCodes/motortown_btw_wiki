@@ -2,7 +2,7 @@ import { useParams } from "react-router";
 import "./Vehicle.scss";
 import { InfoBox } from "./InfoBox";
 import { PartsBox } from "./PartsBox";
-import VehicleClass from "../../../models/Vehicle";
+import VehicleClass from "../../../../../shared/models/Vehicle.ts";
 import { getAllVehicles } from "../../../data/vehicles/vehiclesResponse";
 
 export default function Vehicle() {

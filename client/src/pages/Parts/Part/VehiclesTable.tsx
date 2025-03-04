@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import { getAllVehicles } from "../../../data/vehicles/vehiclesResponse";
-import Vehicle from "../../../models/Vehicle";
+import Vehicle from "../../../../../shared/models/Vehicle";
 
 export const VehiclesTable = ({ slugs }: { slugs: string[] }) => {
 

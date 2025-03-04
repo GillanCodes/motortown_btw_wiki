@@ -1,9 +1,9 @@
 import './parts.scss';
 import categoriesJson from "../../data/categories/categories.json";
 import { getAllParts } from "../../data/parts/partsResponse";
-import { Category, SubCategory } from "../../models/Category";
-import Part from "../../models/Part";
 import { useNavigate } from 'react-router';
+import Part from '../../../../shared/models/Part';
+import { Category, SubCategory } from '../../../../shared/models/Category';
 
 export const Parts = () => {
   const categories: Category[] = categoriesJson;

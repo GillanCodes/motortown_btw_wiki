@@ -1,8 +1,8 @@
 import { Dropdown } from "../../../components/Dropdown/Dropdown"
-import Vehicle from "../../../models/Vehicle";
+import Vehicle from "../../../../../shared/models/Vehicle";
 
 import categoriesJson from "../../../data/categories/categories.json";
-import { Category, SubCategory } from "../../../models/Category";
+import { Category, SubCategory } from "../../../../../shared/models/Category";
 import { PartsTable } from "./PartsTable";
 
 export const PartsBox = ({ vehicle }: { vehicle?: Vehicle }) => {

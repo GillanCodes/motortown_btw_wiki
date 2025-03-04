@@ -1,7 +1,7 @@
 import "./Part.scss";
 import { useParams } from "react-router";
 import { getAllParts } from "../../../data/parts/partsResponse";
-import PartClass from "../../../models/Part.ts";
+import PartClass from "../../../../../shared/models/Part.ts";
 import { InfoBox } from "./InfoBox.tsx";
 import { VehiclesTable } from "./VehiclesTable.tsx";
 

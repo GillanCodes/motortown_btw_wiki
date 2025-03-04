@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import { getAllParts } from "../../../data/parts/partsResponse"
-import Part from "../../../models/Part"
+import Part from "../../../../../shared/models/Part"
 
 export const PartsTable = ({ slugs, sub }: { slugs: string[], sub:string }) => {
 
