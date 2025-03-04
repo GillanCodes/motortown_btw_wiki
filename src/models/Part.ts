@@ -18,14 +18,16 @@ class Part {
   slug: string;
   description: string;
   info: InfoType;
+  vehicles: string[];
 
-  constructor({ name, category, slug, description, info }:
-    { name: string; category: CategoryType; slug: string; description: string; info: InfoType; }) {
+  constructor({ name, category, slug, description, info, vehicles }:
+    { name: string; category: CategoryType; slug: string; description: string; info: InfoType; vehicles: string[] }) {
     this.name = name;
     this.category = category;
     this.slug = slug;
     this.description = description;
     this.info = info;
+    this.vehicles = vehicles;
   }
 
 }
