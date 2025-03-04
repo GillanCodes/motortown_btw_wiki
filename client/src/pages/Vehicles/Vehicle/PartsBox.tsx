@@ -7,7 +7,7 @@ import { PartsTable } from "./PartsTable";
 
 export const PartsBox = ({ vehicle }: { vehicle?: Vehicle }) => {
 
-  const categories:Category[] | undefined = categoriesJson;
+  const categories:any[] | undefined = categoriesJson;
 
   if (!categories)
     return <div>No cat</div> // TODO : Handle error

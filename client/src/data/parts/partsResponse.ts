@@ -1,4 +1,4 @@
-import Part from "../../models/Part";
+import Part from '../../../../shared/models/Part';
 
 import e1 from './engine_v8_440.json';
 import e2 from './engine_v8_240.json';

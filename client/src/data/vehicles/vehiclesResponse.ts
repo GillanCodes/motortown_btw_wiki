@@ -1,4 +1,4 @@
-import Vehicle from "../../models/Vehicle";
+import Vehicle from "../../../../shared/models/Vehicle";
 
 import cora from "./cora.json";
 import mitage from "./mitage.json";

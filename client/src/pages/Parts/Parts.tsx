@@ -6,7 +6,7 @@ import Part from '../../../../shared/models/Part';
 import { Category, SubCategory } from '../../../../shared/models/Category';
 
 export const Parts = () => {
-  const categories: Category[] = categoriesJson;
+  const categories: any[] = categoriesJson;
   const parts: Part[] = getAllParts();
 
   const navigate = useNavigate();
