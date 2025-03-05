@@ -1,8 +1,6 @@
 import { model, Schema } from "mongoose";
 import { Part } from "../../../../shared/models/Part";
 
-
-
 const partSchema = new Schema<Part>({
   name: {
     type: String,
@@ -11,6 +9,16 @@ const partSchema = new Schema<Part>({
   slug: {
     type: String,
     required: true
+  },
+  category: {
+    main: {
+      type:String,
+      required:true
+    },
+    sub: {
+      type:String,
+      required: true
+    }
   },
   description: {
     type: String,
@@ -30,6 +38,11 @@ const partSchema = new Schema<Part>({
       size: {type:Number, required: false},
       unit: {type:String, required:false}
     }
+  },
+  vehicles: {
+    type: [String],
+    default: [],
+    ref: "Vehicle"
   }
 }, {timestamps:true});
 
