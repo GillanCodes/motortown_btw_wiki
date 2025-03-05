@@ -12,7 +12,7 @@ type InfoType = {
   price: number;
 };
 
-class Part {
+export class Part {
   name: string;
   category: CategoryType;
   slug: string;
