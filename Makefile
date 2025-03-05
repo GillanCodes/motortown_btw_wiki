@@ -4,8 +4,11 @@ start_back:
 start_front:
 	cd ./client/ && npm run dev
 
+make_env:
+	echo -e "PORT=5000\nJWT_TOKEN=ChangeMe\nDB_CONNECT_STRING=mongodb://127.0.0.1:27017/motortown_wiki_dev" > ./server/dist/server/.env
+
 dev:
 	concurrently "make start_back" "make start_front"
 
-install_dependencies:
-	npm i -g nodemon concurrently
+init:
+	sudo npm i -g nodemon concurrently; make make_env
