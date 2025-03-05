@@ -1,5 +1,5 @@
 start_back:
-	cd ./server/ && concurrently "tsc --watch" "nodemon ./dist/src/server.js"
+	cd ./server/ && concurrently "tsc --watch" "nodemon ./dist/server/src/server.js"
 
 start_front:
 	cd ./client/ && npm run dev
