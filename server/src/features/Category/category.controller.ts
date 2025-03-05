@@ -1,17 +1,20 @@
 import { Request, Response } from "express";
-import { SubCategory } from "../../../../shared/models/Category";
+import { Category, SubCategory } from "../../../../shared/models/Category";
 import categoryModel from "./category.model";
+import { isValidObjectId } from "mongoose";
 
-export const getAllCategories = async (_req: Request, res:Response) => {
+export const getAllCategories = async (_req: Request, res: Response): Promise<any> => {
   const categories = await categoryModel.find();
-  res.status(201).json(categories);
+  return res.status(201).json(categories);
 }
 
-export const createCategory = (req: Request, res: Response) => {
+export const createCategory = (req: Request, res: Response): any => {
 
   const { name, slug, subCategories }: { name: string, slug?: string, subCategories?: SubCategory[] } = req.body;
 
-  if (!name) res.json({ error: "empty_name" }) // TODO Handle Error
+  if (!name)
+    return res.json({ error: "empty_name" }); // TODO Handle Error
+
 
   var formatedSlug = slug ? slug.toLocaleLowerCase().split(' ').join('_') : name.toLocaleLowerCase().split(' ').join('_');
 
@@ -19,14 +22,47 @@ export const createCategory = (req: Request, res: Response) => {
     name,
     slug: formatedSlug,
     sub: subCategories
-  }).then((data:unknown) => {
-    res.json(data);
-  }).catch((err:string) => {
+  }).then((data: unknown) => {
+    return res.json(data);
+  }).catch((err: string) => {
     console.log(err);
-    res.send(err)
+    return res.send(err)
   })
 }
 
-export const createSubCategory = (req: Request, res: Response):void => {
+export const createSubCategory = async (req: Request, res: Response): Promise<any> => {
 
+  const { subs }: { subs: [{ name: string, slug?: string }] } = req.body;
+  const { id } = req.params;
+
+  if (!id && !isValidObjectId(id))
+    return res.json({ error: "not_valid_id" }); // TODO Handle Error
+
+  if (!subs)
+    return res.json({ error: "empty_sub_categories_array" }); // TODO Handle Error
+
+  let category = await categoryModel.findById(id);
+  if (!category)
+    return res.json({ error: "missing_category" }); // TODO Handle Error
+
+  try {
+    subs.forEach(sub => { //Push each item of my array into the parent (Category) model
+      if (!sub.name)
+        return;
+
+      var formatedSlug = sub.slug ? sub.slug.toLocaleLowerCase().split(' ').join() : sub.name.toLocaleLowerCase().split(' ').join('_');
+
+      //Create the item
+      const item: SubCategory = {
+        name: sub.name,
+        slug: formatedSlug
+      };
+      category.sub.push(item);
+    });
+    const result = await category.save();
+    return res.json(result);
+
+  } catch (err) {
+    return res.json(err);
+  } 
 }
