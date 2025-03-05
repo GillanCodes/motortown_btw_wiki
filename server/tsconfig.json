@@ -2,7 +2,7 @@
     "compilerOptions": {
         "target": "ES6",
         "outDir": "./dist",
-        "rootDir": "./",
+        "rootDir": "../",
         "module": "CommonJS",
         "strict": true,
         "typeRoots": ["./node_modules/@types"],
