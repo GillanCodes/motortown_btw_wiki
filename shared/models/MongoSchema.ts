@@ -1,4 +1,4 @@
-export class mongoSchema
+export class MongoSchema
 {
   _id: string;
   createdAt: string;
