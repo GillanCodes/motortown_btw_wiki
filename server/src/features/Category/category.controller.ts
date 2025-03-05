@@ -8,6 +8,18 @@ export const getAllCategories = async (_req: Request, res: Response): Promise<an
   return res.status(201).json(categories);
 }
 
+export const getCategory = async (req: Request, res: Response): Promise<any> => {
+  
+  const { id } = req.params;
+
+  if (!id || !isValidObjectId(id)) return res.json({error: "not_a_valid_id"})
+
+  const category = await categoryModel.findById(id);
+  if (!category) return res.json({error: "no_category_found"})
+
+  return res.status(201).json(category);
+}
+
 export const createCategory = (req: Request, res: Response): any => {
 
   const { name, slug, subCategories }: { name: string, slug?: string, subCategories?: SubCategory[] } = req.body;
@@ -35,7 +47,7 @@ export const createSubCategory = async (req: Request, res: Response): Promise<an
   const { subs }: { subs: [{ name: string, slug?: string }] } = req.body;
   const { id } = req.params;
 
-  if (!id && !isValidObjectId(id))
+  if (!id || !isValidObjectId(id))
     return res.json({ error: "not_valid_id" }); // TODO Handle Error
 
   if (!subs)
