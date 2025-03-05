@@ -2,8 +2,9 @@ import { Request, Response } from "express";
 import { SubCategory } from "../../../../shared/models/Category";
 import categoryModel from "./category.model";
 
-export const getAllCategories = (req: Request, res:Response) => {
-    res.json({'categories': "no"});
+export const getAllCategories = async (_req: Request, res:Response) => {
+  const categories = await categoryModel.find();
+  res.status(201).json(categories);
 }
 
 export const createCategory = (req: Request, res: Response) => {
