@@ -14,7 +14,7 @@ interface Prices {
   rent: number;
 }
 
-interface Info {
+export interface Info {
   categories: string[];
   purpose: string;
   confort: number;
@@ -31,7 +31,7 @@ interface Location {
   y: number;
 }
 
-class Vehicle {
+export class Vehicle {
   name: string;
   slug: string;
   picture: string;
