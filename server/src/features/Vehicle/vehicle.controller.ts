@@ -12,11 +12,26 @@ export const getAllVehicles = async (req: Request, res: Response): Promise<any> 
 export const getVehicle = async (req: Request, res: Response): Promise<any> => {
 
   const { id } = req.params;
-  if (!isValidObjectId(id)) return res.json({ error: "invalid_id" });
+  var vehicle;
 
-  const vehicle = await vehicleModel.findById(id).populate({path: "parts"});
-  if (!vehicle) return res.json({error: "vehicle_not_found"});
-  return res.json(vehicle);
+  try {
+    if (!isValidObjectId(id))
+      vehicle = await vehicleModel.findOne({ slug: id }).populate({ path: "parts" });
+    else
+      vehicle = await vehicleModel.findById(id).populate({ path: "parts" });
+
+    if (!vehicle) return res.json({ error: "vehicle_not_found" });
+    return res.json(vehicle);
+
+  } catch (error) {
+    if (!isValidObjectId(id))
+      vehicle = await vehicleModel.findOne({ slug: id });
+    else
+      vehicle = await vehicleModel.findById(id);
+
+    if (!vehicle) return res.json({ error: "vehicle_not_found" });
+    return res.json(vehicle);
+  }
 
 }
 
@@ -27,7 +42,7 @@ export const createVehicle = (req: Request, res: Response): any => {
     slug?: string,
     info?: string,
     parts?: string,
-    location?:string
+    location?: string
   } = req.body;
 
   if (!name) return res.json({ error: "empty_name_field" });
@@ -36,9 +51,9 @@ export const createVehicle = (req: Request, res: Response): any => {
   const filename = req.file.filename;
   const formatedSlug = slug ? slug.toLocaleLowerCase().split(' ').join('_') : name.toLocaleLowerCase().split(' ').join('_');
 
-  var infoJson:Info | undefined = info ? JSON.parse(info) : undefined;
-  var locationJson:Location | undefined = location ? JSON.parse(location) : undefined;
-  var partsArr:string[] = parts ? parts.split(',') : [];
+  var infoJson: Info | undefined = info ? JSON.parse(info) : undefined;
+  var locationJson: Location | undefined = location ? JSON.parse(location) : undefined;
+  var partsArr: string[] = parts ? parts.split(',') : [];
 
   vehicleModel.create({
     name,
