@@ -19,7 +19,7 @@ type InfoType = {
 }
 
 export const getAllParts = async (req: Request, res: Response): Promise<any> => {
-  const parts = await partModel.find().select("name slug info.price description");
+  const parts = await partModel.find().select("name slug description category info.price");
   return res.status(201).json(parts);
 }
 
