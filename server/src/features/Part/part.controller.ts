@@ -19,8 +19,34 @@ type InfoType = {
 }
 
 export const getAllParts = async (req: Request, res: Response): Promise<any> => {
-  const parts = await partModel.find();
+  const parts = await partModel.find().select("name slug info.price description");
   return res.status(201).json(parts);
+}
+
+export const getPart = async (req: Request, res: Response): Promise<any> => {
+
+  const { id } = req.params;
+  var part;
+
+  try {
+    if (!isValidObjectId(id))
+      part = await partModel.findOne({ slug: id }).populate({ path: "vehicles" });
+    else
+      part = await partModel.findById(id).populate({ path: "vehicles" });
+
+    if (!part) return res.json({ error: "vehicle_not_found" });
+    return res.json(part);
+
+  } catch (error) {
+    if (!isValidObjectId(id))
+      part = await partModel.findOne({ slug: id });
+    else
+      part = await partModel.findById(id);
+
+    if (!part) return res.json({ error: "part_not_found" });
+    return res.json(part);
+  }
+
 }
 
 export const createPart = (req: Request, res: Response): any => {
