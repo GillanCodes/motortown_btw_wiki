@@ -8,7 +8,8 @@ const vehicleSchema = new Schema<Vehicle>({
   },
   slug: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   picture: {
     type:String,
