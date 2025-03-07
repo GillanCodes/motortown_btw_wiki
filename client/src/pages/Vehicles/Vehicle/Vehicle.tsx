@@ -3,14 +3,30 @@ import "./Vehicle.scss";
 import { InfoBox } from "./InfoBox";
 import { PartsBox } from "./PartsBox";
 import VehicleClass from "../../../../../shared/models/Vehicle.ts";
-import { getAllVehicles } from "../../../data/vehicles/vehiclesResponse";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../../types/dispatch.type.ts";
+import { getVehicle } from "../../../actions/vehicle.action.ts";
 
 export default function Vehicle() {
 
   const { slug } = useParams<{ slug: string }>();
-  const vehicles:VehicleClass[] | undefined = getAllVehicles();
 
-  const vehicleData:VehicleClass | undefined = vehicles.find((v: any) => v.slug === slug)
+  const dispatch = useDispatch<AppDispatch>();
+  const [vehicleData, setVehicleData] = useState();
+
+  useEffect(() => {
+    const getItem = async () => {
+      try {
+        const data:any = await dispatch(getVehicle(slug!));
+        setVehicleData(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getItem();
+  }, []);
+
 
   if (!vehicleData) {
     return 'no vehicule';
@@ -18,6 +34,7 @@ export default function Vehicle() {
   }
 
   const vehicle:VehicleClass = new VehicleClass(vehicleData);
+  console.log(vehicleData ,vehicle)
   return (
     <div className="container vehicule__container">
       <div className="grid">
