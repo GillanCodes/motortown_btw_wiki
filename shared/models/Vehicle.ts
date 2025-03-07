@@ -1,3 +1,5 @@
+import Part from "./Part";
+
 interface UnlockRequirement {
   job: string;
   level: number;
@@ -36,7 +38,7 @@ export class Vehicle {
   slug: string;
   picture: string;
   info: Info;
-  parts: string[]
+  parts: string[] | Part[]
   location: Location[];
 
   constructor({
