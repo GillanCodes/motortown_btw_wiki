@@ -5,7 +5,7 @@ import partModel from "../Part/part.model";
 import { isValidObjectId } from "mongoose";
 
 export const getAllVehicles = async (req: Request, res: Response): Promise<any> => {
-  const parts = await vehicleModel.find();
+  const parts = await vehicleModel.find().select("name slug info.prices.buy info.categories picture");
   return res.status(201).json(parts);
 }
 
