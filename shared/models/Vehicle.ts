@@ -18,7 +18,7 @@ export interface Info {
   categories: string[];
   purpose: string;
   confort: number;
-  seat: number;
+  seats: number;
   wheels: number;
   powertrain: string;
   prices: Prices;
@@ -47,7 +47,7 @@ export class Vehicle {
       categories: [],
       purpose: "General Use",
       confort: 0,
-      seat: 1,
+      seats: 1,
       wheels: 4,
       powertrain: "AWD",
       prices: { buy: 0, rent: 0 },
