@@ -12,6 +12,12 @@ type CategoryType = {
   sub: string
 }
 
+type InfoType = {
+  mass: number,
+  price: number,
+  betterment: BettermentType
+}
+
 export const getAllParts = async (req: Request, res: Response): Promise<any> => {
   const parts = await partModel.find();
   return res.status(201).json(parts);
@@ -19,7 +25,7 @@ export const getAllParts = async (req: Request, res: Response): Promise<any> => 
 
 export const createPart = (req: Request, res: Response): any => {
 
-  const { name, slug, category, betterment, price, mass, description }: { name: string, slug?: string, category: CategoryType, betterment?: BettermentType, price?: number, mass?: number, description?: string } = req.body;
+  const { name, slug, info, category, description }: { name: string, slug?: string, info: InfoType, category: CategoryType, description?: string } = req.body;
 
   if (!name)
     return res.json({ error: "empty_name" }); // TODO Handle Error
@@ -34,11 +40,7 @@ export const createPart = (req: Request, res: Response): any => {
     slug: formatedSlug,
     category,
     description,
-    info: {
-      mass,
-      price,
-      betterment
-    }
+    info
   }).then((data: unknown) => {
     return res.json(data);
   }).catch((err: string) => {
@@ -50,19 +52,19 @@ export const createPart = (req: Request, res: Response): any => {
 export const editPart = async (req: Request, res: Response): Promise<any> => {
 
   const { id } = req.params;
-  if (!isValidObjectId(id)) return res.json({error: "invalid_id"});
+  if (!isValidObjectId(id)) return res.json({ error: "invalid_id" });
 
   const { name, slug, category, betterment, price, mass, description }: { name: string, slug?: string, category: CategoryType, betterment?: BettermentType, price?: number, mass?: number, description?: string } = req.body;
 
   if (!name) return res.json({ error: "empty_name" }); // TODO Handle Error
   if (!category) return res.json({ error: "empty_category" }); // TODO Handle Error
-  
+
   let formatedSlug = slug ? slug.toLocaleLowerCase().split(' ').join('_') : name.toLocaleLowerCase().split(' ').join('_');
 
   partModel.findByIdAndUpdate(id, {
     $set: {
       name,
-      slug:formatedSlug,
+      slug: formatedSlug,
       category,
       description,
       info: {
@@ -71,7 +73,7 @@ export const editPart = async (req: Request, res: Response): Promise<any> => {
         mass
       }
     }
-  }, {new:true, upsert:true}).then((data) => {
+  }, { new: true, upsert: true }).then((data) => {
     res.status(201).send(data);
   }).catch(err => console.log(err))
 }
