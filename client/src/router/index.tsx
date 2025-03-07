@@ -1,31 +1,41 @@
 import { BrowserRouter, Routes, Route } from 'react-router'
 import Home from '../pages/Home/Home';
-import { Navbar } from '../components/Navbar/Navbar';
 import { NotFound } from '../pages/Errors/NotFound';
-import { Footer } from '../components/Footer/Footer';
 import { Vehicles } from '../pages/Vehicles/Vehicles';
 import Vehicle from '../pages/Vehicles/Vehicle/Vehicle';
 import { Parts } from '../pages/Parts/Parts';
 import Part from '../pages/Parts/Part/Part';
+import { PublicLayout } from '../layout/PublicLayout';
+import { AdminLayout } from '../layout/AdminLayout';
+import Dashboard from '../pages/Admin/Dashboard';
 
 export default function index() {
   return (
     <>
       <BrowserRouter>
-        <Navbar />
         <Routes>
-          <Route index element={<Home />} />
-          <Route path='vehicles'>
-            <Route index element={<Vehicles />} />
-            <Route path=':slug' element={<Vehicle />} />
+          {/* PUBLIC PART */}
+          <Route element={<PublicLayout />}>
+            <Route index element={<Home />} />
+            <Route path='vehicles'>
+              <Route index element={<Vehicles />} />
+              <Route path=':slug' element={<Vehicle />} />
+            </Route>
+            <Route path="parts">
+              <Route index element={<Parts />} />
+              <Route path=':slug' element={<Part />} />
+            </Route>
           </Route>
-          <Route path="parts">
-            <Route index element={<Parts />} />
-            <Route path=':slug' element={<Part />} />
+          {/* ADMIN PART */}
+          <Route path='admin' element={<AdminLayout />}>
+            <Route index element={<Dashboard />} />
+            <Route path='part'>
+              <Route path='edit' element={<Home />} />
+            </Route>
           </Route>
+
           <Route path='*' element={<NotFound />} />
         </Routes>
-        <Footer />
       </BrowserRouter>
     </>
   )
