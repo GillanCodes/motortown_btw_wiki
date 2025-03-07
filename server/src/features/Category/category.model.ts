@@ -8,7 +8,8 @@ const subCategory = new Schema<SubCategory>({
   },
   slug: {
     type: String,
-    required:true
+    required:true,
+    unique: true
   }
 });
 
@@ -19,7 +20,8 @@ const categorySchema = new Schema<Category>({
   },
   slug: {
     type:String,
-    required: true
+    required: true,
+    unique: true
   },
   sub: {
     type: [subCategory],
