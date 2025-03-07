@@ -2,16 +2,10 @@ import { useNavigate } from "react-router";
 import { getAllVehicles } from "../../../data/vehicles/vehiclesResponse";
 import Vehicle from "../../../../../shared/models/Vehicle";
 
-export const VehiclesTable = ({ slugs }: { slugs: string[] }) => {
+export const VehiclesTable = ({ vehicles }: { vehicles: Vehicle[] }) => {
 
-  if (!slugs) return;
-
-  const allVehicles: Vehicle[] | undefined = getAllVehicles();
-
-  if (!allVehicles)
+  if (!vehicles)
     return <div>No Parts</div> // TODO ERROR Handle
-
-  const vehicles:Vehicle[] | undefined = allVehicles.filter((vehicle:Vehicle) => slugs.includes(vehicle.slug));
 
   if (vehicles.length === 0)
     return <div>No Parts corresponding</div> // TODO : ERROR HANDLE

@@ -8,7 +8,7 @@ export default function VehicleReducer(state = initialState, action:Action)
   switch(action.type)
   {
     case GET_VEHICLES:
-      return action.payload
+      return action.payload;
     default:
       return state;
   }

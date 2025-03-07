@@ -1,13 +1,25 @@
 import './parts.scss';
-import categoriesJson from "../../data/categories/categories.json";
 import { getAllParts } from "../../data/parts/partsResponse";
 import { useNavigate } from 'react-router';
 import Part from '../../../../shared/models/Part';
 import { Category, SubCategory } from '../../../../shared/models/Category';
+import { useSelector } from 'react-redux';
+import { isEmpty } from '../../../../shared/utils/isEmpty';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../types/dispatch.type';
+import { getParts } from '../../actions/part.action';
 
 export const Parts = () => {
-  const categories: any[] = categoriesJson;
-  const parts: Part[] = getAllParts();
+
+  const dispatch = useDispatch<AppDispatch>()
+
+  const categories = useSelector((state:any) => state.CategoryReducer);
+  const parts = useSelector((state:any) => state.PartReducer);
+
+  useEffect(() => {
+    dispatch(getParts());
+  }, [])
 
   const navigate = useNavigate();
 
@@ -15,7 +27,7 @@ export const Parts = () => {
     <div className='container parts__container'>
       <h1>Parts</h1>
 
-      {categories.map((cat: Category, key: number) => {
+      {!isEmpty(categories) && categories.map((cat: Category, key: number) => {
 
         return (
           <div id={cat.slug} key={key} className="main-category">
@@ -37,7 +49,7 @@ export const Parts = () => {
                       </thead>
                       <tbody>
 
-                        {parts.filter((part: Part) => part.category.main === cat.slug && part.category.sub === sub.slug).map((part: Part) => {
+                        {!isEmpty(parts) && parts.filter((part: Part) => part.category.main === cat.slug && part.category.sub === sub.slug).map((part: Part) => {
 
                           return (
                             <tr key={key} onClick={() => navigate("/parts/" + part.slug)}>

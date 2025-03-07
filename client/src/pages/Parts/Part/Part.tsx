@@ -1,20 +1,36 @@
 import "./Part.scss";
 import { useParams } from "react-router";
-import { getAllParts } from "../../../data/parts/partsResponse";
 import PartClass from "../../../../../shared/models/Part.ts";
 import { InfoBox } from "./InfoBox.tsx";
 import { VehiclesTable } from "./VehiclesTable.tsx";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../../types/dispatch.type.ts";
+import { useEffect, useState } from "react";
+import { getPart, getParts } from "../../../actions/part.action.ts";
+import { isEmpty } from "../../../../../shared/utils/isEmpty.ts";
 
 export default function Part() {
+
+  const dispatch = useDispatch<AppDispatch>()
   const { slug } = useParams<{ slug: string }>();
-  const parts = getAllParts();
 
-  const partData:PartClass | undefined = parts.find((v: any) => v.slug === slug);
+  const [partData, setPartData] = useState();
 
-  console.log(partData);
-  
+  useEffect(() => {
+    const getItem = async () => {
+      try {
+        const data: any = await dispatch(getPart(slug!));
+        setPartData(data)
+      } catch (error) {
+        console.log(error);
+      }
+    }
 
-  if (!partData) {
+    getItem();
+  }, [])
+
+  if (isEmpty(partData)) {
     return (
       <div>
         <p>No part found ...</p>
@@ -22,7 +38,7 @@ export default function Part() {
     )
   }
 
-  const part:PartClass = new PartClass(partData);
+  const part: PartClass = new PartClass(partData);
 
   return (
     <div className="container part__container">
@@ -36,7 +52,7 @@ export default function Part() {
         </div>
         <div className="box" id="vehicles">
           <h2>Vehicles :</h2>
-          <VehiclesTable slugs={part.vehicles} />          
+          <VehiclesTable vehicles={part.vehicles} />
         </div>
 
       </div>
