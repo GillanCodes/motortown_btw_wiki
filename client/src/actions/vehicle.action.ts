@@ -4,8 +4,8 @@ import { AppDispatch } from "../types/dispatch.type";
 export const GET_VEHICLES = "GET_VEHICLES";
 
 export const getVehicles = () => {
-  return (dispatch: AppDispatch) => {
-    return axios({
+  return async (dispatch: AppDispatch) => {
+    return await axios({
       method: "GET",
       url: "/api/vehicle"
     }).then((res) => {
