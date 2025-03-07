@@ -27,7 +27,6 @@ export default function Vehicle() {
     getItem();
   }, []);
 
-
   if (!vehicleData) {
     return 'no vehicule';
     // TODO : Error page

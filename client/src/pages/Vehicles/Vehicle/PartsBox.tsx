@@ -1,13 +1,13 @@
 import { Dropdown } from "../../../components/Dropdown/Dropdown"
 import Vehicle from "../../../../../shared/models/Vehicle";
 
-import categoriesJson from "../../../data/categories/categories.json";
 import { Category, SubCategory } from "../../../../../shared/models/Category";
 import { PartsTable } from "./PartsTable";
+import { useSelector } from "react-redux";
 
 export const PartsBox = ({ vehicle }: { vehicle?: Vehicle }) => {
 
-  const categories:any[] | undefined = categoriesJson;
+  const categories = useSelector((state:any) => state.CategoryReducer);
 
   if (!categories)
     return <div>No cat</div> // TODO : Handle error
@@ -20,7 +20,7 @@ export const PartsBox = ({ vehicle }: { vehicle?: Vehicle }) => {
             <p>{cat.name}</p>
             {cat.sub.map((sub:SubCategory, key:number) => {
               return (
-                <Dropdown title={sub.name} content={<PartsTable slugs={vehicle!.parts} sub={sub.slug} key={key} />} />
+                <Dropdown title={sub.name} content={<PartsTable parts={vehicle!.parts} sub={sub.slug} key={key} />} />
               )
             })}
           </div>

@@ -2,14 +2,12 @@ import { useNavigate } from "react-router";
 import { getAllParts } from "../../../data/parts/partsResponse"
 import Part from "../../../../../shared/models/Part"
 
-export const PartsTable = ({ slugs, sub }: { slugs: string[], sub:string }) => {
-
-  const allParts: Part[] | undefined = getAllParts();
-
-  if (!allParts)
+export const PartsTable = ({ parts, sub }: { parts: Part[] | undefined, sub:string }) => {
+  
+  if (!parts)
     return <div>No Parts</div> // TODO ERROR Handle
 
-  const parts: Part[] | undefined = allParts.filter((part: Part) => slugs.includes(part.slug) && part.category.sub === sub);
+  const filteredParts: Part[] | undefined = parts.filter((part: Part) => part.category.sub === sub);
 
   if (parts.length === 0)
     return <div>No Parts corresponding</div> // TODO : ERROR HANDLE
@@ -28,13 +26,13 @@ export const PartsTable = ({ slugs, sub }: { slugs: string[], sub:string }) => {
           </tr>
         </thead>
         <tbody>
-          {parts.map((part:Part) => {
+          {filteredParts.map((part:Part, key:number) => {
             return (
-              <tr onClick={() => navigate('/parts/' + part.slug)}>
+              <tr onClick={() => navigate('/parts/' + part.slug)} key={key}>
                 <td>{part.name}</td>
                 <td>{part.info.mass}</td>
                 <td>{part.info.price}</td>
-                <td>{part.info.betterment.size}{part.info.betterment.unit}</td>
+                {part.info.betterment ? <td>{part.info.betterment.size}{part.info.betterment.unit}</td> : <td>None</td>}
               </tr>
             )
           })}
