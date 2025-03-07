@@ -25,12 +25,9 @@ export const createVehicle = (req: Request, res: Response): any => {
   const { name, slug, info, parts, location }: {
     name: string,
     slug?: string,
-    info?: Info,
-    parts?: string[],
-    location?: {
-      x: number,
-      y: number
-    }
+    info?: string,
+    parts?: string,
+    location?:string
   } = req.body;
 
   if (!name) return res.json({ error: "empty_name_field" });
@@ -39,12 +36,16 @@ export const createVehicle = (req: Request, res: Response): any => {
   const filename = req.file.filename;
   const formatedSlug = slug ? slug.toLocaleLowerCase().split(' ').join('_') : name.toLocaleLowerCase().split(' ').join('_');
 
+  var infoJson:Info | undefined = info ? JSON.parse(info) : undefined;
+  var locationJson:Location | undefined = location ? JSON.parse(location) : undefined;
+  var partsArr:string[] = parts ? parts.split(',') : [];
+
   vehicleModel.create({
     name,
     slug: formatedSlug,
-    info,
-    parts,
-    location,
+    info: infoJson,
+    parts: partsArr,
+    location: locationJson,
     picture: "/cdn/" + filename
   }).then((data) => {
     return res.json(data);
