@@ -10,8 +10,8 @@ require('./config/database');
 app.use(bodyParser.urlencoded({limit: "1kb", extended: true, parameterLimit: 100}));
 app.use(bodyParser.json({limit: "1kb"}));
 
-app.use("/cdn", express.static(path.join(__dirname, "../../public/uploads")));
-app.use("/assets", express.static(path.join(__dirname, "../../public/assets")));
+app.use("/cdn", express.static(path.join(__dirname, "../../../public/uploads")));
+app.use("/assets", express.static(path.join(__dirname, "../../../public/assets")));
 
 import routes from "./routes/index";
 app.use("/api", routes)
