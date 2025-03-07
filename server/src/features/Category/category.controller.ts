@@ -22,18 +22,17 @@ export const getCategory = async (req: Request, res: Response): Promise<any> => 
 
 export const createCategory = (req: Request, res: Response): any => {
 
-  const { name, slug, subCategories }: { name: string, slug?: string, subCategories?: SubCategory[] } = req.body;
+  const { name, slug, sub }: { name: string, slug?: string, sub?: SubCategory[] } = req.body;
 
   if (!name)
     return res.json({ error: "empty_name" }); // TODO Handle Error
-
 
   var formatedSlug = slug ? slug.toLocaleLowerCase().split(' ').join('_') : name.toLocaleLowerCase().split(' ').join('_');
 
   categoryModel.create({
     name,
     slug: formatedSlug,
-    sub: subCategories
+    sub
   }).then((data: unknown) => {
     return res.json(data);
   }).catch((err: string) => {
