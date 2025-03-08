@@ -21,7 +21,7 @@ table.table {
 
 
 
-  tr:not(.table__head)
+  tr:not(.table__head):not(.table__no-click)
   {
     &:hover {
       background: var(--accent-100);

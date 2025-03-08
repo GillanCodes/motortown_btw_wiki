@@ -5,6 +5,7 @@
 
 //Import Components
 @use "./components/table";
+@use "./components/button";
 
 * {
   margin: 0;
@@ -34,24 +35,6 @@ body {
   max-width: 1080px;
   background-color: var(--background);
   min-height: calc(100vh - variables.$navbar--height - 100px);
-}
-
-
-.button {
-  min-width: 100px;
-  padding: 8px 12px;
-  background-color: var(--primary);
-  border-radius: 7px;
-  color: var(--text);
-  text-decoration: none;
-  font-size: 16px;
-
-  transition: background-color .05s;
-
-  &:hover {
-    background-color: var(--primary-400);
-    color: var(--text);
-  }
 }
 
 a {
