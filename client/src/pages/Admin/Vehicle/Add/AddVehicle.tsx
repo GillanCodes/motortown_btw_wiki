@@ -19,7 +19,7 @@ const defaultVehicle = {
       buy: 0,
       rent: 0
     },
-    unlock: []
+    unlock: [],
   }
 }
 
@@ -29,10 +29,11 @@ export default function AddVehicle() {
 
   const [vehicle, setVehicle] = useState(defaultVehicle)
   const [picture, setPicture] = useState<any>(null);
+  const [unlock, setUnlock] = useState({job: "", level: 0});
 
   const nameHandle = (name:string) => {
-    setVehicle({...vehicle, name:name})
     autoSlug(name);
+    setVehicle({...vehicle, name:name})
   }
 
   const autoSlug = (name: string) => {
@@ -43,6 +44,11 @@ export default function AddVehicle() {
   const formatCategories = (categories: string) => {
     var formated = categories.split(', ').join(",").split(" ,").join(",");
     setVehicle({ ...vehicle, info: { ...vehicle.info, categories: formated } })
+  }
+
+  const addUnlock = () => {
+    vehicle.info.unlock.unshift({job:unlock.job, level:unlock.level})
+    setUnlock({job: "", level: 0});
   }
 
   const resetForm = () => {
@@ -60,7 +66,9 @@ export default function AddVehicle() {
     data.append("picture", picture);
     data.append("info", JSON.stringify(vehicle.info));
 
-    dispatch(createVehicle(data)); 
+    dispatch(createVehicle(data)).then(() => {
+      resetForm();
+    }); 
 
   }
 
@@ -73,7 +81,7 @@ export default function AddVehicle() {
           <div className="field">
             <label className='label'>Name</label>
             <div className="control">
-              <input type="text" className="input" onChange={(e) => nameHandle(e.target.value)} />
+              <input type="text" className="input" value={vehicle.name} onChange={(e) => nameHandle(e.target.value)} />
             </div>
           </div>
           <div className="field">
@@ -153,6 +161,41 @@ export default function AddVehicle() {
               <input type="number" className="input" value={vehicle.info.prices.rent} onChange={(e) => setVehicle({ ...vehicle, info: { ...vehicle.info, prices: { ...vehicle.info.prices, rent: Number(e.target.value) } } })} />
             </div>
           </div>
+        </div>
+
+        <div className="unlocks">
+          <table className="table">
+            <thead>
+              <tr className="table__head">
+                <th>Level</th>
+                <th>Job</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="table__no-click">
+                <td><input type="number" className="input" value={unlock.level} onChange={(e) => setUnlock({...unlock, level:Number(e.target.value)})} /></td>
+                <td><input type="text" className="input" value={unlock.job} onChange={(e) => setUnlock({...unlock, job:e.target.value})}/></td>
+                <td><button className="button is-link" onClick={addUnlock}>Add</button></td>
+              </tr>
+              {vehicle.info.unlock && vehicle.info.unlock.map((unlock: {level:number, job:string}) => {
+                return (
+                  <tr className="table__no-click">
+                    <td>{unlock.level}</td>
+                    <td>{unlock.job}</td>
+                    <td>
+                      <button className="button is-link">Edit</button>
+                      <button className="button is-danger">Delete</button>
+                    </td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
+
+        <div className="cargo">
+
         </div>
 
         <div className="field is-grouped">
