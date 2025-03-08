@@ -12,7 +12,7 @@ export default function Home() {
 
       <div className="home__info">
         <p><a href="https://motor-town.com/" target="_blank" id="official_website">MotorTown: Behind the wheel</a> is an Open World Driving Simulator with Proper Tire Physics</p><br />
-        <p>The game was released on December 21th, 2021.</p> <a href="https://store.steampowered.com/app/1369670/Motor_Town_Behind_The_Wheel/" target="_blank" className="button">Buy it on Steam</a>
+        <p>The game was released on December 21th, 2021.</p> <a href="https://store.steampowered.com/app/1369670/Motor_Town_Behind_The_Wheel/" target="_blank" className="button is-primary">Buy it on Steam</a>
       </div>
 
 

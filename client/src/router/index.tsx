@@ -12,6 +12,7 @@ import Dashboard from '../pages/Admin/Dashboard';
 import CategoryAdmin from '../pages/Admin/Category/Category';
 import PartAdmin from '../pages/Admin/Part/Part';
 import VehicleAdmin from '../pages/Admin/Vehicle/Vehicle';
+import AddVehicle from '../pages/Admin/Vehicle/Add/AddVehicle';
 
 export default function index() {
   return (
@@ -41,6 +42,7 @@ export default function index() {
             </Route>
             <Route path='vehicle'>
               <Route index element={<VehicleAdmin />} />
+              <Route path="add" element={<AddVehicle />} />
             </Route>
 
           </Route>

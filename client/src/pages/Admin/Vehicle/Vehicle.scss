@@ -1,0 +1,28 @@
+#vehicle_admin
+{
+  display: flex;
+  justify-content: center;
+
+
+  .content
+  {
+    width: 80%;
+
+    h1
+    {
+      text-align: center;
+      margin-top: 2em;
+    }
+
+    table 
+    {
+      margin-top: 1em;
+    }
+
+  }
+
+  .button
+  {
+    margin: 0 .5em;
+  }
+}

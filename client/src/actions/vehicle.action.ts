@@ -2,6 +2,7 @@ import axios from "axios";
 import { AppDispatch } from "../types/dispatch.type";
 
 export const GET_VEHICLES = "GET_VEHICLES";
+export const CREATE_VEHICLE = "CREATE_VEHICLE";
 
 export const getVehicles = () => {
   return async (dispatch: AppDispatch) => {
@@ -23,5 +24,18 @@ export const getVehicle = (slug: string) => async () => {
   } catch (error) {
     console.log(error);
     return error;
+  }
+}
+
+export const createVehicle = (data:any) => {
+  return async (dispatch:AppDispatch) => {
+    return await axios({
+      method:"POST",
+      withCredentials: true,
+      url: "/api/vehicle",
+      data: data
+    }).then((res) => {
+      dispatch({ type: CREATE_VEHICLE, payload:res.data});
+    })
   }
 }
