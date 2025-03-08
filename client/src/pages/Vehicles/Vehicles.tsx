@@ -1,6 +1,5 @@
 import './Vehicles.scss';
 import { useNavigate } from "react-router";
-import { getAllVehicles } from "../../data/vehicles/vehiclesResponse.ts";
 import Vehicle from "../../../../shared/models/Vehicle.ts";
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
