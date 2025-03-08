@@ -49,7 +49,7 @@ export default function Vehicle() {
         </div>
 
         <div className="box" id="infos">
-          <InfoBox vehicule={vehicle} />
+          <InfoBox vehicle={vehicle} />
         </div>
         <div className="box" id="map">
           <p>map</p>
