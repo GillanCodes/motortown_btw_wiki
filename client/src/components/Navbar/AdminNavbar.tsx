@@ -9,7 +9,7 @@ export default function AdminNavbar() {
         <NavLink className="navbar__button" to="/admin">Dashboard</NavLink>
         <NavLink className="navbar__button" to="/admin/category">Categories</NavLink>
         <NavLink className="navbar__button" to="/admin/part">Parts</NavLink>
-        <NavLink className="navbar__button" to="/admin/vehicle">Vahicles</NavLink>
+        <NavLink className="navbar__button" to="/admin/vehicle">Vehicles</NavLink>
         <ThemeToggle />
       </div>
     </nav>
