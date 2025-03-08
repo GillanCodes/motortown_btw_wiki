@@ -7,7 +7,11 @@ import { Parts } from '../pages/Parts/Parts';
 import Part from '../pages/Parts/Part/Part';
 import { PublicLayout } from '../layout/PublicLayout';
 import { AdminLayout } from '../layout/AdminLayout';
+
 import Dashboard from '../pages/Admin/Dashboard';
+import CategoryAdmin from '../pages/Admin/Category/Category';
+import PartAdmin from '../pages/Admin/Part/Part';
+import VehicleAdmin from '../pages/Admin/Vehicle/Vehicle';
 
 export default function index() {
   return (
@@ -29,9 +33,16 @@ export default function index() {
           {/* ADMIN PART */}
           <Route path='admin' element={<AdminLayout />}>
             <Route index element={<Dashboard />} />
-            <Route path='part'>
-              <Route path='edit' element={<Home />} />
+            <Route path='category'>
+              <Route index element={<CategoryAdmin />} />
             </Route>
+            <Route path='part'>
+              <Route index element={<PartAdmin />} />
+            </Route>
+            <Route path='vehicle'>
+              <Route index element={<VehicleAdmin />} />
+            </Route>
+
           </Route>
 
           <Route path='*' element={<NotFound />} />
