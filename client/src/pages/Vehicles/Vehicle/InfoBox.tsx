@@ -39,7 +39,7 @@ export const InfoBox = ({vehicule}: {vehicule: Vehicle}) => {
         </div>
         <div className="field">
           <p className="field__title">Seat{vehicule.info.seat > 1 ? "s" : ""} :</p>
-          <p className="field__content">{vehicule.info.seat}</p>
+          <p className="field__content">{vehicule.info.seats}</p>
         </div>
         <div className="field">
           <p className="field__title">Wheel{vehicule.info.wheels > 1 ? "s" : ""} :</p>
