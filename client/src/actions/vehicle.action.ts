@@ -41,6 +41,19 @@ export const createVehicle = (data:any) => {
   }
 }
 
+export const editVehicle = (id:string, data:any) => {
+  return async (dispatch:AppDispatch) => {
+    return await axios({
+      method:"PUT",
+      withCredentials: true,
+      url: "/api/vehicle/" + id,
+      data: data
+    }).then((res) => {
+      dispatch({ type: CREATE_VEHICLE, payload:res.data});
+    })
+  }
+}
+
 export const deleteVehicle = (id:string) => {
   return async (dispatch:AppDispatch) => {
     return await axios({

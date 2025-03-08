@@ -67,6 +67,37 @@ export const createVehicle = (req: Request, res: Response): any => {
   }).catch(err => console.log(err))
 }
 
+export const editVehicle = async (req:Request, res:Response): Promise<any> => {
+
+  const { id } = req.params;
+  const { name, slug, info, parts, location }: {
+    name: string,
+    slug?: string,
+    info?: string,
+    parts?: string,
+    location?: string
+  } = req.body;
+  
+  if (!isValidObjectId(id)) return res.json({ error: "not_valid_ids" })
+
+  const vehicle = await vehicleModel.findById(id);
+  if (!vehicle) return res.json({ error: "vehicle_not_found" });
+
+  if (name) vehicle.name = name;
+  if (slug) vehicle.slug = slug;
+  if (parts)
+  {
+    var partsArr: string[] = parts ? parts.split(',') : [];
+    vehicle.parts = partsArr;
+  }
+  if (info) vehicle.info = JSON.parse(info);
+  if (req.file) vehicle.picture = "/cdn/" + req.file.filename;
+
+  await vehicle.save();
+
+  return res.json(vehicle);
+}
+
 export const addPartToVehicle = async (req: Request, res: Response): Promise<any> => {
 
   const { vehicleId, partId } = req.params;

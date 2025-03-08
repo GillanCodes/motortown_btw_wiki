@@ -1,39 +1,60 @@
-import { useState } from "react"
-import "./AddVehicle.scss"
+import { useEffect, useState } from "react"
+import "./VehicleForm.scss"
 import { isEmpty } from "../../../../../../shared/utils/isEmpty";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../../types/dispatch.type";
-import { createVehicle } from "../../../../actions/vehicle.action";
+import { createVehicle, editVehicle, getVehicle } from "../../../../actions/vehicle.action";
+import Vehicle from "../../../../../../shared/models/Vehicle";
+import { useNavigate, useParams } from "react-router";
 
-const defaultVehicle = {
-  name: "",
-  slug: "",
-  info: {
-    categories: "",
-    purpose: "",
-    confort: 1,
-    seats: 2,
-    wheels: 4,
-    powertrain: "AWD",
-    prices: {
-      buy: 0,
-      rent: 0
-    },
-    unlock: [],
+export default function VehicleForm() {
+
+  const { slug } = useParams();
+  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+  const [vehicleParam, setVehicleParam] = useState<Vehicle | undefined>(undefined)
+
+  useEffect(() => {
+    const getItem = async () => {
+      try {
+        const data: any = await dispatch(getVehicle(slug!));
+        if (!data.error) setVehicleParam(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getItem();
+  }, []);
+
+  var defaultVehicle = {
+    name: vehicleParam ? vehicleParam.name : "",
+    slug: vehicleParam ? vehicleParam.slug : "",
+    info: {
+      categories: vehicleParam ? vehicleParam.info.categories.join(",") : "",
+      purpose: vehicleParam ? vehicleParam.info.purpose : "",
+      confort: vehicleParam ? vehicleParam.info.confort : 1,
+      seats: vehicleParam ? vehicleParam.info.seats : 4,
+      wheels: vehicleParam ? vehicleParam.info.wheels : 4,
+      powertrain: vehicleParam ? vehicleParam.info.powertrain : "AWD",
+      prices: {
+        buy: vehicleParam ? vehicleParam.info.prices.buy : 0,
+        rent: vehicleParam ? vehicleParam.info.prices.rent : 0,
+      },
+      unlock: vehicleParam ? vehicleParam.info.unlock : [],
+    }
   }
-}
 
-export default function AddVehicle() {
-
-  const dispatch = useDispatch<AppDispatch>()
+  useEffect(() => {
+    resetForm();
+  }, [vehicleParam])
 
   const [vehicle, setVehicle] = useState(defaultVehicle)
   const [picture, setPicture] = useState<any>(null);
-  const [unlock, setUnlock] = useState({job: "", level: 0});
+  const [unlock, setUnlock] = useState({ job: "", level: 0 });
 
-  const nameHandle = (name:string) => {
+  const nameHandle = (name: string) => {
     autoSlug(name);
-    setVehicle({...vehicle, name:name})
+    setVehicle({ ...vehicle, name: name })
   }
 
   const autoSlug = (name: string) => {
@@ -47,8 +68,8 @@ export default function AddVehicle() {
   }
 
   const addUnlock = () => {
-    vehicle.info.unlock.unshift({job:unlock.job, level:unlock.level})
-    setUnlock({job: "", level: 0});
+    vehicle.info.unlock.unshift({ job: unlock.job, level: unlock.level })
+    setUnlock({ job: "", level: 0 });
   }
 
   const resetForm = () => {
@@ -57,8 +78,8 @@ export default function AddVehicle() {
     setPicture(null);
   }
 
-  const submitForm = () => {
-    if (!isEmpty(picture)) return;
+  const submitFormCreate = () => {
+    if (!picture) return;
 
     const data = new FormData();
     data.append("name", vehicle.name);
@@ -68,13 +89,26 @@ export default function AddVehicle() {
 
     dispatch(createVehicle(data)).then(() => {
       resetForm();
-    }); 
+    });
+  }
 
+  const submitFormEdit = () => {
+    const data = new FormData();
+    data.append("name", vehicle.name);
+    data.append("slug", vehicle.slug);
+    data.append("info", JSON.stringify(vehicle.info));
+
+    if (picture) data.append("picture", picture);
+
+    const id:string = String(vehicleParam!._id!);
+
+    dispatch(editVehicle(id, data))
   }
 
   return (
     <div className='container' id='vehicle_admin-add'>
-      <h1>Add New Vehicle</h1>
+
+      {vehicleParam ? <h1>Edit {vehicleParam.name}</h1> : <h1>Add New Vehicle</h1>}
 
       <form onSubmit={(e) => e.preventDefault()}>
         <div className="fields">
@@ -174,11 +208,11 @@ export default function AddVehicle() {
             </thead>
             <tbody>
               <tr className="table__no-click">
-                <td><input type="number" className="input" value={unlock.level} onChange={(e) => setUnlock({...unlock, level:Number(e.target.value)})} /></td>
-                <td><input type="text" className="input" value={unlock.job} onChange={(e) => setUnlock({...unlock, job:e.target.value})}/></td>
+                <td><input type="number" className="input" value={unlock.level} onChange={(e) => setUnlock({ ...unlock, level: Number(e.target.value) })} /></td>
+                <td><input type="text" className="input" value={unlock.job} onChange={(e) => setUnlock({ ...unlock, job: e.target.value })} /></td>
                 <td><button className="button is-link" onClick={addUnlock}>Add</button></td>
               </tr>
-              {vehicle.info.unlock && vehicle.info.unlock.map((unlock: {level:number, job:string}) => {
+              {vehicle.info.unlock && vehicle.info.unlock.map((unlock: { level: number, job: string }) => {
                 return (
                   <tr className="table__no-click">
                     <td>{unlock.level}</td>
@@ -200,14 +234,21 @@ export default function AddVehicle() {
 
         <div className="field is-grouped">
           <div className="control">
-            <button className="button is-link" onClick={submitForm}>Submit</button>
+            {vehicleParam ?
+              <button className="button is-link" onClick={submitFormEdit}>Edit</button>
+              :
+              <button className="button is-link" onClick={submitFormCreate}>Create</button>
+            }
+
           </div>
           <div className="control">
-            <button className="button is-danger" onClick={resetForm}>Cancel</button>
+            <button className="button is-warning" onClick={resetForm}>Reset</button>
+          </div>
+          <div className="control">
+            <button className="button is-danger" onClick={() => navigate('/admin/vehicle')}>Cancel</button>
           </div>
         </div>
       </form>
-
     </div>
   )
 }
