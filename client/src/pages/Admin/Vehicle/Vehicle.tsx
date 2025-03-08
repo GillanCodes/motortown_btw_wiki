@@ -4,7 +4,7 @@ import VehicleClass from "../../../../../shared/models/Vehicle";
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../types/dispatch.type.ts';
-import { getVehicles } from '../../../actions/vehicle.action.ts';
+import { deleteVehicle, getVehicles } from '../../../actions/vehicle.action.ts';
 import { useSelector } from 'react-redux';
 import { isEmpty } from "../../../../../shared/utils/isEmpty.ts";
 
@@ -33,6 +33,14 @@ export default function Vehicle() {
     )
   }
 
+  const deleteHandle = (id:string) => {
+    var isDelete = window.confirm("Test")
+    if (!isDelete) return;
+    else {
+      dispatch(deleteVehicle(id))
+    }
+  }
+
   return (
     <div className="container" id="vehicle_admin">
       <div className="content">
@@ -59,7 +67,7 @@ export default function Vehicle() {
                   <td>
                     <div>
                       <button className="button is-info" onClick={() => navigate('/admin/vehicle/edit/' + vehicle.slug)}>Edit</button>
-                      <button className="button is-danger">Delete</button>
+                      <button className="button is-danger" onClick={() => deleteHandle(vehicle._id)}>Delete</button>
                     </div>
                   </td>
                 </tr>

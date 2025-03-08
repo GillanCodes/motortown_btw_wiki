@@ -1,3 +1,4 @@
+import { ObjectId } from "mongoose";
 import Part from "./Part";
 
 interface UnlockRequirement {
@@ -34,12 +35,15 @@ interface Location {
 }
 
 export class Vehicle {
+  _id?: string | ObjectId;
   name: string;
   slug: string;
   picture: string;
   info: Info;
   parts: string[] | Part[]
   location: Location[];
+  createdAt?: string | Date;
+  updatedAt?: string | Date;
 
   constructor({
     name = "Unknown Vehicle",

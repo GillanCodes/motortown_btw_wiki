@@ -93,3 +93,14 @@ export const addPartToVehicle = async (req: Request, res: Response): Promise<any
 
   return res.json(vehicle);
 }
+
+export const deleteVehicle = async (req:Request, res:Response):Promise<any> => {
+
+  const { id } = req.params;
+
+  if(!isValidObjectId(id)) return res.send({error: "invalid_id"});
+  
+  const vehicle = await vehicleModel.findByIdAndDelete(id);
+  return res.send(vehicle);
+
+}
